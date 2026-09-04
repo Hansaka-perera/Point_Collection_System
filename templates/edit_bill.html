@@ -1,0 +1,16 @@
+<h2>Edit Bill</h2>
+
+<form method="POST">
+    Customer Name:
+    <input name="customer_name" value="{{ bill.customer_name }}">
+    <button>Update</button>
+</form>
+
+<hr>
+
+<form action="/add_item/{{ bill.bill_no }}" method="POST">
+    Product: <input name="product_name"><br>
+    Qty: <input name="qty"><br>
+    Price: <input name="price"><br>
+    <button>Add</button>
+</form>

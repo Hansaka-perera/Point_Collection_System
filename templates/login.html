@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - SMART POS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-100 flex items-center justify-center p-4">
+  <div class="w-full max-w-md bg-white rounded-3xl shadow-xl border p-8">
+    <h1 class="text-3xl font-black mb-2">SMART POS</h1>
+    <p class="text-slate-500 mb-6">Sign in to continue</p>
+    {% if error %}
+      <div class="mb-4 rounded-xl bg-red-50 text-red-700 px-4 py-3 border border-red-200">{{ error }}</div>
+    {% endif %}
+    <form method="post" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-slate-600 mb-1">Username</label>
+        <input name="username" class="w-full border rounded-xl px-4 py-3" placeholder="admin" required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-slate-600 mb-1">Password</label>
+        <input name="password" type="password" class="w-full border rounded-xl px-4 py-3" placeholder="1234" required>
+      </div>
+      <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl">Login</button>
+    </form>
+    <p class="text-xs text-slate-400 mt-4">Default admin login: admin / 1234</p>
+  </div>
+</body>
+</html>

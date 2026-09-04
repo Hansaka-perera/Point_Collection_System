@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Print Bill</title>
+  <style>
+    body {
+      font-family: monospace;
+      width: 300px;
+      margin: auto;
+      font-size: 13px;
+    }
+
+    .center { text-align: center; }
+    .right { text-align: right; }
+    .bold { font-weight: bold; }
+
+    hr {
+      border: none;
+      border-top: 1px dashed #000;
+      margin: 5px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 2px 0;
+      vertical-align: top;
+    }
+
+    .total-line td {
+      border-top: 1px dashed #000;
+      padding-top: 5px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body onload="window.print()">
+
+  <div class="center">
+    <h3>SMART POS</h3>
+    <p>Sri Lanka</p>
+    <p>Tel: 0770000000</p>
+  </div>
+
+  <hr>
+
+  <p>Bill: {{ bill.bill_no }}</p>
+  <p>Date: {{ bill.date }}</p>
+  <p>Customer: {{ bill.customer_name or "Walk-in" }}</p>
+
+  <hr>
+
+  <table>
+    <tr class="bold">
+      <td>Item</td>
+      <td class="right">Qty</td>
+      <td class="right">Amt</td>
+    </tr>
+
+    {% for i in items %}
+    <tr>
+      <td colspan="3">{{ i.product_name }}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="right">{{ i.qty }} x {{ i.price }}</td>
+      <td class="right">{{ i.line_total }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+  <hr>
+
+  <table>
+    <tr>
+      <td>Total</td>
+      <td class="right">{{ bill.total }}</td>
+    </tr>
+    <tr>
+      <td>Paid</td>
+      <td class="right">{{ bill.amount_paid }}</td>
+    </tr>
+    <tr>
+      <td>Balance</td>
+      <td class="right">{{ bill.balance }}</td>
+    </tr>
+  </table>
+
+  <hr>
+
+  <div class="center">
+    <p class="bold">Thank You!</p>
+    <p>Come Again</p>
+  </div>
+
+</body>
+</html>
